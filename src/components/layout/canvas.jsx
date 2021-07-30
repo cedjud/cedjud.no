@@ -14,8 +14,10 @@ const LCanvas = ({ children }) => {
       }}
       onCreated={(state) => state.events.connect(dom.current)}
     >
+      <color attach="background" args={"#ff99dd"} />
       <A11yUserPreferences>
         <Preload all />
+        <ambientLight color="white" intensity={50} />
         {children}
       </A11yUserPreferences>
     </Canvas>

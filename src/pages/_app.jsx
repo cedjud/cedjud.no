@@ -7,6 +7,7 @@ import Dom from '@/components/layout/dom'
 
 import '@/styles/index.css'
 
+
 let LCanvas = null
 if (process.env.NODE_ENV === 'production') {
   LCanvas = dynamic(() => import('@/components/layout/canvas'), {
@@ -16,9 +17,11 @@ if (process.env.NODE_ENV === 'production') {
   LCanvas = require('@/components/layout/canvas').default
 }
 
+
 function Layout({ dom }) {
   return <>{dom && <Dom>{dom}</Dom>}</>
 }
+
 
 const ForwardPropsToR3fComponent = ({ comp, pageProps }) => {
   let r3fArr = []
@@ -45,11 +48,14 @@ const ForwardPropsToR3fComponent = ({ comp, pageProps }) => {
   }
 }
 
+
 function App({ Component, pageProps = {} }) {
   const router = useRouter()
+
   useEffect(() => {
     useStore.setState({ router })
   }, [router])
+
   return (
     <>
       <Header title={pageProps.title} />

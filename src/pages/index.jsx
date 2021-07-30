@@ -1,20 +1,19 @@
 import useStore from '@/helpers/store'
+import { OrbitControls } from '@react-three/drei' 
 import dynamic from 'next/dynamic'
-// Step 5 - delete Instructions components
-import Instructions from '@/components/dom/instructions'
 
-// Step 2 - update Box components
-const Box = dynamic(() => import('@/components/canvas/Box'), {
+const Sphere = dynamic(() => import('@/components/canvas/Sphere/Sphere'), {
   ssr: false,
 })
 
 const Page = ({ title }) => {
   useStore.setState({ title })
+  
   return (
     <>
-      <Box r3f route='/box' />
-      {/* Step 5 - delete Instructions components */}
-      <Instructions />
+      <OrbitControls r3f />
+      <pointLight r3f position={[10, 10, 10]} />
+      <Sphere r3f route='/box' />
     </>
   )
 }
