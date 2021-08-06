@@ -5,6 +5,7 @@ import useStore from '@/helpers/store'
 
 const LCanvas = ({ children }) => {
   const dom = useStore((state) => state.dom)
+
   return (
     <Canvas
       mode='concurrent'
@@ -14,10 +15,10 @@ const LCanvas = ({ children }) => {
       }}
       onCreated={(state) => state.events.connect(dom.current)}
     >
-      <color attach="background" args={"#ff99dd"} />
+      {/* <color attach="background" args={"#ff99dd"} /> */}
+      <color attach="background" args={"#000000"} />
       <A11yUserPreferences>
         <Preload all />
-        <ambientLight color="white" intensity={50} />
         {children}
       </A11yUserPreferences>
     </Canvas>
