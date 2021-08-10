@@ -50,8 +50,8 @@ if (process.env.EXPORT !== 'true') {
   }
 }
 
-// module.exports = plugins(
-//   [
+module.exports = plugins(
+  [
 //     [
 //       withOffline,
 //       {
@@ -82,7 +82,7 @@ if (process.env.EXPORT !== 'true') {
 //         },
 //       },
 //     ],
-//     withBundleAnalyzer,
-//   ],
-//   nextConfig
-// )
+    withBundleAnalyzer,
+  ],
+  nextConfig
+)

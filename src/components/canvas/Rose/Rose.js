@@ -3,8 +3,8 @@ import { useFrame, extend } from '@react-three/fiber'
 import { useRef } from 'react'
 import { shaderMaterial } from '@react-three/drei'
 
-import vertex from './shaders/shader.vert';
-import fragment from './shaders/shader.frag';
+import vertex from './shaders/shader.vs';
+import fragment from './shaders/shader.fs';
 
 const ColorShiftMaterial = shaderMaterial(
   {
