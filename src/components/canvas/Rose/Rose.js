@@ -1,14 +1,15 @@
-import * as THREE from 'three'
-import { useFrame, extend } from '@react-three/fiber'
-import { useRef } from 'react'
-import { shaderMaterial } from '@react-three/drei'
+import * as THREE from 'three';
+import { useFrame, extend } from '@react-three/fiber';
+import { useRef } from 'react';
+import { shaderMaterial } from '@react-three/drei';
 
 import vertex from './shaders/shader.vs';
 import fragment from './shaders/shader.fs';
 
-const ColorShiftMaterial = shaderMaterial(
+const RoseMaterial = shaderMaterial(
   {
     time: 0,
+    mouse: new THREE.Vector2(),
     color: new THREE.Color(0.05, 0.0, 0.025),
     // wireframe: true,
     transparent: true,
@@ -17,21 +18,23 @@ const ColorShiftMaterial = shaderMaterial(
   },
   vertex,
   fragment
-)
+);
 
-extend({ ColorShiftMaterial })
+extend({ RoseMaterial });
 
 const Rose = (props) => {
-  const mesh = useRef(false)
+  const mesh = useRef(false);
 
-  useFrame((state, delta) => {
-    const elapsedTime = state.clock.getElapsedTime()
-    mesh.current.material.uniforms.time.value = elapsedTime / 2
+  useFrame(({mouse, clock, viewport}, delta) => {
+    const elapsedTime = clock.getElapsedTime();
 
     if (mesh.current) {
-      mesh.current.rotation.x = mesh.current.rotation.y += 0.001
+      mesh.current.material.uniforms.mouse.value = mouse;
+      mesh.current.material.uniforms.time.value = elapsedTime / 2 + (mouse.x);
+      // mesh.current.rotation.x = mesh.current.rotation.y += 0.001;
+      // mesh.current.position.set((mouse.x * viewport.width) / 2, 0, 0);
     }
-  })
+  });
 
   return (
     <mesh
@@ -41,9 +44,9 @@ const Rose = (props) => {
       rotation={[Math.PI / 2, 0, 0]}
     >
       <sphereGeometry args={[1.5, 256, 256]} />
-      <colorShiftMaterial attach='material' time={3} />
+      <roseMaterial attach='material' time={3} />
     </mesh>
-  )
-}
+  );
+};
 
-export default Rose
+export default Rose;
