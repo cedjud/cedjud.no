@@ -4,6 +4,7 @@ import { OrbitControls } from '@react-three/drei'
 import { EffectComposer, Bloom } from '@react-three/postprocessing'
 import dynamic from 'next/dynamic'
 
+
 const Rose = dynamic(() => import('@/components/canvas/Rose/Rose'), {
   ssr: false,
 })
@@ -16,7 +17,7 @@ const Page = ({ title }) => {
 
   return (
     <>
-      {/* <OrbitControls r3f autoRotate /> */}
+      <OrbitControls r3f autoRotate />
       <Rose r3f />
       <EffectComposer r3f>
         <Bloom
@@ -27,6 +28,7 @@ const Page = ({ title }) => {
           luminanceSmoothing={0.9} // smoothness of the luminance threshold. Range is [0, 1]
         />
       </EffectComposer>
+      {/* <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade /> */}
     </>
   )
 }
@@ -36,7 +38,7 @@ export default Page
 export async function getStaticProps() {
   return {
     props: {
-      title: 'Jud',
+      title: '✨',
     },
   }
 }

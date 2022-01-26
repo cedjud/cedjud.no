@@ -7,10 +7,8 @@ const Dom = ({ children }) => {
   useStore.setState({ dom: ref })
 
   const handlePointerMove = (e) => {
-    console.log(e.clientX, e.clientY)
     useStore.setState({cursor: {x: e.clientX, y: e.clientY}})
   }
-
 
   return (
     <div

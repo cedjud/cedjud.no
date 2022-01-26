@@ -38,7 +38,7 @@ const Rose = (props) => {
 
       if (state && state.cursor) {
         const position = {x: ((state.cursor.x / window.innerWidth) - 0.5) * 2, y: ((state.cursor.y / window.innerHeight) - 0.5) * 2};
-        mesh.current.material.uniforms.mouse.value = {x: -(state.cursor.x / window.innerWidth) + 0.5, y: -(state.cursor.y / window.innerHeight) + 0.5};
+        mesh.current.material.uniforms.mouse.value = position;
 
         // console.log(position);
         // console.log({x: (state.cursor.x / window.innerWidth) - 0.5, y: (state.cursor.y / window.innerHeight) - 0.5})
@@ -57,7 +57,7 @@ const Rose = (props) => {
     <mesh
       ref={mesh}
       {...props}
-      position={[0, 0, -1]}
+      position={[0, 0, 0]}
       rotation={[Math.PI / 2, 0, 0]}
     >
       <sphereGeometry args={[1.5, 256, 256]} />
