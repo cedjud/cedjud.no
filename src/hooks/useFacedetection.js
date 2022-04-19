@@ -1,7 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { Camera } from '@mediapipe/camera_utils';
 import { FaceDetection } from '@mediapipe/face_detection';
-import { useThree } from '@react-three/fiber';
 
 class Inertia {
   constructor(from, to, acc, dec) {
@@ -35,8 +34,6 @@ class Inertia {
 
 const useFacedetection = () => {
   let facePosition = useRef({ x: 0.5, y: 0.5 });
-
-  // const { viewport } = useThree();
 
   let positionInertia = {
     x: new Inertia(0, 1, 0.2, 0.2),
@@ -73,7 +70,7 @@ const useFacedetection = () => {
 
     faceDetection.setOptions({
       model: 'short',
-      minDetectionConfidence: 0.25,
+      minDetectionConfidence: 0.4,
     });
 
     faceDetection.onResults(onResults);
