@@ -4,7 +4,9 @@ import { useRef, useEffect } from 'react';
 import { shaderMaterial } from '@react-three/drei';
 import { useDrag } from '@use-gesture/react'
 
+
 import useStore from '@/helpers/store';
+import useFacedetection from '@/hooks/useFacedetection';
 
 import vertex from './shaders/shader.vs';
 import fragment from './shaders/shader.fs';
@@ -30,15 +32,18 @@ const Rose = (props) => {
 
   const state = useStore();
 
+  const facePosition = useFacedetection();
+
   useFrame(({mouse, clock, viewport}, delta) => {
     const elapsedTime = clock.getElapsedTime();
 
-
     if (mesh.current) {
 
+      const position = {x: (0.5 - facePosition.current.x) * 3, y: (0.5 - facePosition.current.y) * 5};
+      mesh.current.material.uniforms.mouse.value = position;
       if (state && state.cursor) {
-        const position = {x: ((state.cursor.x / window.innerWidth) - 0.5) * 2, y: ((state.cursor.y / window.innerHeight) - 0.5) * 2};
-        mesh.current.material.uniforms.mouse.value = position;
+        // const position = {x: ((state.cursor.x / window.innerWidth) - 0.5) * 2, y: ((state.cursor.y / window.innerHeight) - 0.5) * 2};
+        // mesh.current.material.uniforms.mouse.value = position;
 
         // console.log(position);
         // console.log({x: (state.cursor.x / window.innerWidth) - 0.5, y: (state.cursor.y / window.innerHeight) - 0.5})
@@ -46,6 +51,7 @@ const Rose = (props) => {
       // mesh.current.material.uniforms.mouse.value = mouse;
       // mesh.current.material.uniforms.time.value = elapsedTime / 2 + (mouse.x);
       mesh.current.material.uniforms.time.value = elapsedTime * 0.5;
+
 
 
       // mesh.current.rotation.x = mesh.current.rotation.y += 0.001;
