@@ -2,8 +2,6 @@ import * as THREE from 'three';
 import { useFrame, extend } from '@react-three/fiber';
 import { useRef, useEffect } from 'react';
 import { shaderMaterial } from '@react-three/drei';
-import { useDrag } from '@use-gesture/react'
-
 
 import useStore from '@/helpers/store';
 import useFacedetection from '@/hooks/useFacedetection';
@@ -27,6 +25,36 @@ const RoseMaterial = shaderMaterial(
 
 extend({ RoseMaterial });
 
+class Inertia {
+  constructor(from, to, acc, dec) {
+    this.from = from;
+    this.to = to;
+    this.acc = acc;
+    this.dec = dec;
+    this.value = this.from;
+    this.speed = 0;
+  }
+
+  update = (newValue) => {
+    this.speed = this.speed + (newValue - this.value) * this.acc;
+    this.speed = this.speed * this.dec;
+    this.value += this.speed;
+    this.value = this._clamp(this.value);
+
+    return this.value;
+  };
+
+  setValue = (value) => {
+    this.speed = 0;
+    this.value = this._clamp(value);
+    return this.value;
+  };
+
+  _clamp = (value) => {
+    return Math.min(this.to, Math.max(this.from, value));
+  };
+}
+
 const Rose = (props) => {
   const mesh = useRef(false);
 
@@ -34,13 +62,21 @@ const Rose = (props) => {
 
   const facePosition = useFacedetection();
 
-  useFrame(({mouse, clock, viewport}, delta) => {
+  let positionInertia = {
+    x: new Inertia(0, 1, 0.2, 0.2),
+    y: new Inertia(0, 1, 0.2, 0.2),
+  };
+
+  useFrame(({clock}, delta) => {
     const elapsedTime = clock.getElapsedTime();
 
     if (mesh.current) {
+      positionInertia.x.update(facePosition.current.x);
+      positionInertia.y.update(facePosition.current.y);
 
-      const position = {x: (0.5 - facePosition.current.x) * 5, y: (0.5 - facePosition.current.y) * 5};
+      const position = {x: (0.5 - positionInertia.x.value) * 5, y: (0.5 - positionInertia.y.value) * 5};
       mesh.current.material.uniforms.mouse.value = position;
+
       if (state && state.cursor) {
         // const position = {x: ((state.cursor.x / window.innerWidth) - 0.5) * 2, y: ((state.cursor.y / window.innerHeight) - 0.5) * 2};
         // mesh.current.material.uniforms.mouse.value = position;
