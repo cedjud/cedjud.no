@@ -4,6 +4,7 @@ import { useRef, useEffect } from 'react';
 import { shaderMaterial } from '@react-three/drei';
 
 import useStore from '@/helpers/store';
+import useHandposition from '@/hooks/useHandposition';
 import useFacedetection from '@/hooks/useFacedetection';
 
 import vertex from './shaders/shader.vs';
@@ -60,6 +61,7 @@ const Rose = (props) => {
 
   const state = useStore();
 
+  // const handPosition = useHandposition();
   const facePosition = useFacedetection();
 
   let positionInertia = {
@@ -72,7 +74,7 @@ const Rose = (props) => {
 
     if (mesh.current) {
       positionInertia.x.update(facePosition.current.x);
-      positionInertia.y.update(facePosition.current.y);
+      positionInertia.y.update(facePosition.current.x);
 
       const position = {x: (0.5 - positionInertia.x.value) * 5, y: (0.5 - positionInertia.y.value) * 5};
       mesh.current.material.uniforms.mouse.value = position;
