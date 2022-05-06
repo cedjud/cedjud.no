@@ -33,7 +33,7 @@ extend({ ColorShiftMaterial });
 const NoiseQuad = () => {
   const materialRef = useRef();
 
-  // const pose = usePose();
+  const pose = usePose();
 
   useFrame(({ clock, mouse }) => {
     // console.log('nose : ', nose);
@@ -41,24 +41,24 @@ const NoiseQuad = () => {
     if (materialRef.current) {
       // console.log(materialRef.current.uniforms.time.value)
       // materialRef.current.uniforms.nose.value = {x: pose.current.nose[0], y: pose.current.nose[1]};
-      // if (pose && pose.current && pose.current.nose) {
-      //   materialRef.current.uniforms.nose.value = {
-      //     x: pose.current.nose.x,
-      //     y: pose.current.nose.y,
-      //   };
-      // }
-      // if (pose && pose.current && pose.current.rightIndex) {
-      //   materialRef.current.uniforms.rightIndex.value = {
-      //     x: pose.current.rightIndex.x,
-      //     y: pose.current.rightIndex.y,
-      //   };
-      // }
-      // if (pose && pose.current && pose.current.leftIndex) {
-      //   materialRef.current.uniforms.leftIndex.value = {
-      //     x: pose.current.leftIndex.x,
-      //     y: pose.current.leftIndex.y,
-      //   };
-      // }
+      if (pose && pose.current && pose.current.nose) {
+        materialRef.current.uniforms.nose.value = {
+          x: pose.current.nose.x,
+          y: pose.current.nose.y,
+        };
+      }
+      if (pose && pose.current && pose.current.rightIndex) {
+        materialRef.current.uniforms.rightIndex.value = {
+          x: pose.current.rightIndex.x,
+          y: pose.current.rightIndex.y,
+        };
+      }
+      if (pose && pose.current && pose.current.leftIndex) {
+        materialRef.current.uniforms.leftIndex.value = {
+          x: pose.current.leftIndex.x,
+          y: pose.current.leftIndex.y,
+        };
+      }
       materialRef.current.uniforms.time.value = clock.elapsedTime;
     }
   });

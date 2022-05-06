@@ -19,6 +19,7 @@ import {
 
 // import Thing from '../Thing';
 import NoiseQuad from "../NoiseQuad";
+// import NoiseQuad from "../PoseNoise";
 
 function scale(number, inMin, inMax, outMin, outMax) {
   return ((number - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
@@ -55,7 +56,7 @@ function Scene({}) {
 
   return (
     <>
-      <color attach="background" args={["#27ccc7"]} />
+      <color attach="background" args={["#08404d"]} />
       {/* <ambientLight /> */}
       {/* <OrbitControls /> */}
       {/* <Thing /> */}
@@ -73,10 +74,10 @@ function Scene({}) {
 			<NoiseQuad />
 
       <EffectComposer>
-        <Bloom intensity={1.0} luminanceThreshold={0} luminanceSmoothing={0.9} height={300} />
-        <Noise opacity={0.01} />
+        <Bloom intensity={4.0} luminanceThreshold={0} luminanceSmoothing={0.9} height={300} />
+        {/* <Noise opacity={0.01} /> */}
         <Vignette eskil={false} offset={0.1} darkness={0.3} />
-        <Pixelation granularity={80} />
+        <Pixelation granularity={50} />
       </EffectComposer>
     </>
   );

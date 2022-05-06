@@ -25,7 +25,7 @@ void main() {
   float ri = step(0.25 + n * 0.5, (distance(position.xy, 1.0 - rightIndex.xy * 2.0)));
 
   float t = ri + d + li;
-  vD = d;
+  vD = t / 3.0;
   vNoise = n;
   vUv = uv;
   gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);

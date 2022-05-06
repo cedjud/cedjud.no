@@ -29,6 +29,7 @@
     "@react-three/fiber": "^7.0.1",
     "@react-three/postprocessing": "^2.0.5",
     "@use-gesture/react": "^10.2.4",
+    "glsl-map": "^1.0.1",
     "glsl-noise": "^0.0.0",
     "glsl-random": "^0.0.5",
     "lerp": "^1.0.3",

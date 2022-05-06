@@ -3565,6 +3565,11 @@
     "glsl-token-string" "^1.0.1"
     "glsl-tokenizer" "^2.0.2"
 
+"glsl-map@^1.0.1":
+  "integrity" "sha1-X/DfY4h2u2b9rQEKPGQUeeuQFaU="
+  "resolved" "https://registry.npmjs.org/glsl-map/-/glsl-map-1.0.1.tgz"
+  "version" "1.0.1"
+
 "glsl-noise@^0.0.0":
   "integrity" "sha1-NndF86MzgsDu7Ey1S36Zz8HXZws="
   "resolved" "https://registry.npmjs.org/glsl-noise/-/glsl-noise-0.0.0.tgz"
