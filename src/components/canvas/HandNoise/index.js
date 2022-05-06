@@ -43,7 +43,7 @@ const NoiseQuad = () => {
 
   return (
     <mesh>
-      <planeBufferGeometry args={[4, 4, 128, 128]} />
+      <planeBufferGeometry args={[5, 5, 128, 128]} />
       <colorShiftMaterial
         ref={materialRef}
         color="blue"

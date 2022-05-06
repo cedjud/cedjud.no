@@ -28,14 +28,12 @@ const NoiseQuad = () => {
       materialRef.current.uniforms.time.value = clock.elapsedTime;
     }
 
-    materialRef.current.uniforms.mouse.value = mouse;
-
-    console.log('mouse : ', mouse);
+    materialRef.current.uniforms.mouse.value = materialRef.current.uniforms.mouse.value.lerp(mouse, 0.1);
   });
 
   return (
     <mesh>
-      <planeBufferGeometry args={[4, 4, 128, 128]} />
+      <planeBufferGeometry args={[5, 5, 128, 128]} />
       <colorShiftMaterial
         ref={materialRef}
         color='blue'

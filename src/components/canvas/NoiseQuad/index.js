@@ -12,9 +12,7 @@ import fragment from './shaders/shader.fs';
 const ColorShiftMaterial = shaderMaterial(
   {
     time: 0,
-    nose: new THREE.Vector2(0, 0),
-    rightIndex: new THREE.Vector2(0, 0),
-    leftIndex: new THREE.Vector2(0, 0),
+ 
     color: new THREE.Color(1.0, 0.5, 0.1),
   },
   vertex,
@@ -34,14 +32,11 @@ const NoiseQuad = () => {
 
   return (
     <mesh>
-      <planeBufferGeometry args={[4, 4, 128, 128]} />
+      <planeBufferGeometry args={[5, 5, 128, 128]} />
       <colorShiftMaterial
         ref={materialRef}
         color="blue"
         time={1}
-        nose={new THREE.Vector2(0, 0)}
-        rightIndex={new THREE.Vector2(0, 0)}
-        leftIndex={new THREE.Vector2(0, 0)}
         transparent={true}
       />
     </mesh>
