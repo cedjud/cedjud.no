@@ -14,7 +14,4 @@ void main() {
   vec3 color = mix(colorPink, colorBlue, 1.0 - vNoise);
 
   gl_FragColor.rgba = vec4(color, 1.0);
-  // float mappedNoiseValue = map(vNoise, 0.0, 1.0, 0.2, 1.0);
-  // gl_FragColor.rgba = vec4(0.93, 0.35, 0.43, mappedNoiseValue);
-  // gl_FragColor.rgba = vec4(0.93, 0.35, 0.43, vD);
 }

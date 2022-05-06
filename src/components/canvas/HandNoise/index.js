@@ -35,10 +35,9 @@ const NoiseQuad = () => {
 
     if (pose.current && pose.current.rightIndex) {
       const {x, y} = pose.current.rightIndex;
-      materialRef.current.uniforms.mouse.value = {x, y};
+      materialRef.current.uniforms.mouse.value = materialRef.current.uniforms.mouse.value.lerp(new THREE.Vector2(x, y), 0.1);
     } else {
       materialRef.current.uniforms.mouse.value = mouse;
-
     }
   });
 

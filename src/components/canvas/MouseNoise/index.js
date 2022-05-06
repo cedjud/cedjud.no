@@ -29,6 +29,8 @@ const NoiseQuad = () => {
     }
 
     materialRef.current.uniforms.mouse.value = mouse;
+
+    console.log('mouse : ', mouse);
   });
 
   return (

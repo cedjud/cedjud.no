@@ -24,14 +24,9 @@ function Scene({}) {
       {/* <Blob /> */}
 
       <EffectComposer>
-        <Bloom
-          intensity={1.0}
-          luminanceThreshold={0.5}
-          luminanceSmoothing={0.9}
-          height={300}
-        />
-        {/* <Vignette eskil={false} offset={0.1} darkness={0.3} /> */}
-        <Pixelation granularity={40} />
+        <Bloom intensity={4.0} luminanceThreshold={0} luminanceSmoothing={0.9} height={300} />
+        <Vignette eskil={false} offset={0.1} darkness={0.3} />
+        <Pixelation granularity={50} />
       </EffectComposer>
     </>
   );

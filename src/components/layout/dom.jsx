@@ -14,8 +14,8 @@ const Dom = ({ children }) => {
     <div
       onPointerMove={handlePointerMove}
       onMouseMove={handlePointerMove}
-      className='absolute top-0 left-0 z-10 overflow-hidden pointer-events-none dom'
-      // className='absolute top-0 left-0 z-10 w-full h-full overflow-hidden dom'
+      // className='absolute top-0 left-0 z-10 overflow-hidden pointer-events-none dom'
+      className='absolute top-0 left-0 z-10 w-full h-full overflow-hidden dom'
       ref={ref}
     >
       {children}
