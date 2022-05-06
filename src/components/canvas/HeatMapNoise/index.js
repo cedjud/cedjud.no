@@ -18,8 +18,10 @@ import {
 } from "@react-three/postprocessing";
 
 // import Thing from '../Thing';
-import NoiseQuad from "../NoiseQuad";
+// import NoiseQuad from "../NoiseQuad";
 // import NoiseQuad from "../PoseNoise";
+// import NoiseQuad from '../MouseNoise';
+import NoiseQuad from '../HandNoise';
 
 function scale(number, inMin, inMax, outMin, outMax) {
   return ((number - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
