@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-// const titleDefault = 'Cedric Jud'
+const titleDefault = 'Cedric Jud'
 const url = 'https://jud.lol/'
 const description =
   'Some cool stuff here 😎'
@@ -34,7 +34,7 @@ const Header = ({ title = titleDefault }) => {
         <meta name='og:site_name' content={title} />
         <meta name='og:description' content={description} />
 
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⭐️</text></svg>" />
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>" />
 
         {/* Meta Tags for HTML pages on Mobile */}
         {/* <meta name="format-detection" content="telephone=yes"/>
