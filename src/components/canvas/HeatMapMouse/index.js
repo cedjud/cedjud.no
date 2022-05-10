@@ -11,7 +11,7 @@ import {
   Vignette,
 } from "@react-three/postprocessing";
 
-import MouseNoise from '../MouseNoise';
+import MouseNoise from './MouseNoise';
 
 function Scene({}) {
   return (
@@ -22,7 +22,7 @@ function Scene({}) {
 			<MouseNoise />
 
       <EffectComposer>
-        <Bloom intensity={4.0} luminanceThreshold={0} luminanceSmoothing={0.9} height={300} />
+        <Bloom intensity={2.0} luminanceThreshold={0} luminanceSmoothing={0.9} height={300} />
         <Vignette eskil={false} offset={0.1} darkness={0.3} />
         <Pixelation granularity={50} />
       </EffectComposer>

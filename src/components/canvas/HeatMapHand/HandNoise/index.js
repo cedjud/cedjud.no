@@ -8,7 +8,7 @@ import { extend } from "@react-three/fiber";
 import vertex from './shaders/shader.vs';
 import fragment from './shaders/shader.fs';
 
-import usePose from '../../../hooks/usePose';
+import usePose from '../../../../hooks/usePose';
 
 
 const ColorShiftMaterial = shaderMaterial(

@@ -20,7 +20,7 @@ export default Page
 export async function getStaticProps() {
   return {
     props: {
-      title: '✨',
+      title: 'heatmap mouse',
     },
   }
 }

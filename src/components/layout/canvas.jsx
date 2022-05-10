@@ -8,6 +8,8 @@ const LCanvas = ({ children }) => {
 
   return (
     <Canvas
+      linear
+      flat
       mode='concurrent'
       style={{
         position: 'absolute',

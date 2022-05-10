@@ -7,7 +7,7 @@ import {
   Vignette,
 } from '@react-three/postprocessing';
 
-import NoiseQuad from '../HandNoise';
+import NoiseQuad from './HandNoise';
 
 function Scene({}) {
   return (
