@@ -18,7 +18,7 @@ function Scene({}) {
 
       <EffectComposer>
         <Bloom
-          intensity={4.0}
+          intensity={2.0}
           luminanceThreshold={0}
           luminanceSmoothing={0.9}
           height={300}

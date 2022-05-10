@@ -8,7 +8,11 @@ const HeatMapNoise = dynamic(() => import('@/components/canvas/HeatMapHand'), {
 const Page = ({ title }) => {
   useStore.setState({ title });
 
-  return <HeatMapNoise r3f />;
+  return (
+    <>
+      <HeatMapNoise r3f />
+    </>
+  );
 };
 
 export default Page;

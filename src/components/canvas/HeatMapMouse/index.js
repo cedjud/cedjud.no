@@ -24,7 +24,7 @@ function Scene({}) {
       <EffectComposer>
         <Bloom intensity={2.0} luminanceThreshold={0} luminanceSmoothing={0.9} height={300} />
         <Vignette eskil={false} offset={0.1} darkness={0.3} />
-        <Pixelation granularity={50} />
+        <Pixelation granularity={40} />
       </EffectComposer>
     </>
   );
