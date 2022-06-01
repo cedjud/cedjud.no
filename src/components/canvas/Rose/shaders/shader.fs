@@ -11,7 +11,7 @@ varying float vNoise;
 void main() {
   vec3 color = vec3(vNoise, 0.0, 0.0);
   color.z += (1.0 + mouse.x) / 2.0;
-  color.y += (1.0 + mouse.y) / 6.0;
+  color.y -= (1.0 + mouse.y) / 6.0;
   // vec3 color = vec3(0.25 + vNoise, 0.0, 0.4);
   // vec3 color = vec3(0.25 + vNoise, 0.1 * vNoise, 0.25 * vNoise);
 

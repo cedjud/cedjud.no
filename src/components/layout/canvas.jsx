@@ -15,7 +15,7 @@ const LCanvas = ({ children }) => {
         position: 'absolute',
         top: 0,
       }}
-      onCreated={(state) => state.events.connect(dom.current)}
+      // onCreated={(state) => state.events.connect(dom.current)}
     >
       {/* <color attach="background" args={"#ff99dd"} /> */}
       <color attach="background" args={"#000000"} />

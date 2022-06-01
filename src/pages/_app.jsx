@@ -25,20 +25,20 @@ function Layout({ dom }) {
 
 const ForwardPropsToR3fComponent = ({ comp, pageProps }) => {
   let r3fArr = []
-  let compArr = []
+  // let compArr = []
 
   try {
     Children.forEach(comp(pageProps).props.children, (child) => {
       if (child?.props && child.props.r3f) {
         r3fArr.push(child)
       } else {
-        compArr.push(child)
+        // compArr.push(child)
       }
     })
 
     return (
       <>
-        {compArr && <Layout dom={compArr} />}
+        {/* {compArr && <Layout dom={compArr} />} */}
         {r3fArr && <LCanvas>{r3fArr}</LCanvas>}
       </>
     )

@@ -62,30 +62,34 @@ const Rose = (props) => {
   const state = useStore();
 
   // const handPosition = useHandposition();
-  const facePosition = useFacedetection();
+  // const facePosition = useFacedetection();
 
   let positionInertia = {
     x: new Inertia(0, 1, 0.2, 0.2),
     y: new Inertia(0, 1, 0.2, 0.2),
   };
 
-  useFrame(({clock}, delta) => {
+  useFrame(({clock, mouse}, delta) => {
     const elapsedTime = clock.getElapsedTime();
 
     if (mesh.current) {
-      positionInertia.x.update(facePosition.current.x);
-      positionInertia.y.update(facePosition.current.x);
+      // console.log('mouse : ', mouse);
+      // positionInertia.x.update(facePosition.current.x);
+      // positionInertia.y.update(facePosition.current.x);
 
-      const position = {x: (0.5 - positionInertia.x.value) * 5, y: (0.5 - positionInertia.y.value) * 5};
-      mesh.current.material.uniforms.mouse.value = position;
+      // const position = {x: (0.5 - positionInertia.x.value) * 5, y: (0.5 - positionInertia.y.value) * 5};
+      // mesh.current.material.uniforms.mouse.value = position;
 
-      if (state && state.cursor) {
+      // if (state && state.mouse) {
         // const position = {x: ((state.cursor.x / window.innerWidth) - 0.5) * 2, y: ((state.cursor.y / window.innerHeight) - 0.5) * 2};
-        // mesh.current.material.uniforms.mouse.value = position;
+        // const position = {x: ((mouse.x / window.innerWidth) - 0.5) * 2, y: ((mouse.y / window.innerHeight) - 0.5) * 2};
+        console.log('position : ', position);
+        const position = {x: -mouse.x, y: mouse.y * 2}; 
+        mesh.current.material.uniforms.mouse.value = position;
 
         // console.log(position);
         // console.log({x: (state.cursor.x / window.innerWidth) - 0.5, y: (state.cursor.y / window.innerHeight) - 0.5})
-      }
+      // }
       // mesh.current.material.uniforms.mouse.value = mouse;
       // mesh.current.material.uniforms.time.value = elapsedTime / 2 + (mouse.x);
       mesh.current.material.uniforms.time.value = elapsedTime * 0.5;
